@@ -1,0 +1,18 @@
+interface MedicineService {
+
+struct Medicine {
+           long id;
+           string name, api;
+           double dose;
+};
+
+exception not_found_exception{};
+
+typedef sequence<Medicine> medicine_list;
+
+medicine_list getMedicines();
+Medicine getMedicineById(in long id)  raises (not_found_exception);
+void addMedicine(in Medicine med);
+Medicine getMedicineByName(in string name)  raises (not_found_exception);
+Medicine getMedicineByNameDose(in string name, in double dose) raises (not_found_exception);
+};
